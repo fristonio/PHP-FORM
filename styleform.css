@@ -10,6 +10,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
 }
+
 .myform fieldset{
     border: none;
 }
@@ -86,17 +87,17 @@
 {
     position: relative;
     display: block;
-    padding: 19px 39px 18px 39px;
+    padding: 10px 29px 12px 29px;
     color: #FFF;
     margin: 0 auto;
     background: #1abc9c;
     font-size: 18px;
     text-align: center;
     font-style: normal;
-    width: 40%;
+    width: 30%;
     border: 1px solid #16a085;
     border-width: 1px 1px 3px;
-    margin: 0 5%;
+    margin: 0 10%;
     margin-bottom: 5px;
     float: left;
 }

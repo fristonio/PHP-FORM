@@ -7,6 +7,10 @@
 	<body>
 		<div class="myform">
 		<?php
+			$SeeError=0;
+			$host='localhost';
+			$user='guest';
+			$pass='guest123';
 			function format($data) {
   				$data = trim($data);
   				$data = stripslashes($data);
@@ -18,37 +22,44 @@
 			if ($_SERVER["REQUEST_METHOD"] == "POST"){
 				if(empty($_POST["name"])){
 					$nameErr="* The name field is required";
+					$SeeError=1;
 				}
 				else{
 					$name=format($_POST["name"]);
 					if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
   						$nameErr = "Entered name is not a valid name";
+  						$SeeError=1;
   					}
 				}
 
 				if(empty($_POST["email"])){
 					$emailErr="* The EMAIL field is necessery";
+					$SeeError=1;
 				}
 				else{
 					$email=format($_POST["email"]);
 					if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  $emailErr = "Email provided is not a valid email"; 
-}
+  						$emailErr = "Email provided is not a valid email"; 
+  						$SeeError=1;
+					}
 				}
 
 				if(empty($_POST["mobile"])){
 					$mobileErr="* The MOBILE NAME field is required";
+					$SeeError=1;
 				}
 				else
 					$mobile=format($_POST["mobile"]);
 
 				if(empty($_POST["url"])){
 					$websiteErr="* The WEBSITE is required";
+					$SeeError=1;
 				}
 				else{
 					$website=format($_POST["url"]);
 					if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
   						$websiteErr = "Invalid URL"; 
+  						$SeeError=1;
 					}
 				}
 
@@ -56,17 +67,43 @@
 
 				if(empty($_POST["interest"])){
 					$interestErr="* The INTEREST is required";
+					$SeeError=1;
 				}
 				else
 					$interest=format($_POST["interest"]);
 
 				if(empty($_POST["college"])){
 					$collegeErr="* The COLLEGE IS required";
+					$SeeError=1;
 				}
-				else
+				else{
 					$college=format($_POST["college"]);
+					if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+  						$nameErr = "Entered name is not a valid name";
+  						$SeeError=1;
+  					}
+				}
 
 				$abtclg=format($_POST["abtclg"]);
+			if($SeeError===0){
+			$conn = mysql_connect($host, $user, $pass);
+			if(! $conn ){
+  				die('Could not connect: ' . mysql_error());
+			}
+			else{
+				$sql="INSERT INTO USERS( Name,Email,Website,Mobile,AbtYou,Interests,College,AbtClg)
+					 VALUES
+					 ('$name','$email','$website','$mobile','$abtyou','$interest','$college','$abtclg')";
+				mysql_select_db('FirstDatabse');
+				$retval = mysql_query($sql,$conn);
+				if(! $retval ){
+  						die('Could not enter data: ' . mysql_error());
+				}
+				$message = "Data entered have been Saved in the DATABASE";
+				echo "<script type='text/javascript'>alert('$message');</script>";
+				mysql_close($conn);
+			}
+			}
 
 			}
 		?>
@@ -80,7 +117,7 @@ NAME :<p class="error"> <span class="error"><?php echo $nameErr; ?></span></p>
 
 E-MAIL : <p class="error"><span class="error"><?php echo $emailErr; ?></span></p>
 
-<input type="email" name="email" placeholder="Your Email *" value="<?php echo $email; ?>">
+<input type="email" name="email" placeholder="Your Email *" value="<?php echo $email; ?>" required>
 
 WEBSITE : <p class="error"><span class="error"><?php echo $websiteErr ?></span></p>
 
