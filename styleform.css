@@ -1,0 +1,118 @@
+.myform{
+    max-width: 800px;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    margin: 10px auto;
+    padding: 20px;
+    background: #f4f7f8;
+    border-radius: 8px;
+    //font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+.myform fieldset{
+    border: none;
+}
+.myform legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+.myform label {
+    display: block;
+    margin-bottom: 8px;
+}
+.myform input[type="text"],
+.myform input[type="date"],
+.myform input[type="datetime"],
+.myform input[type="email"],
+.myform input[type="number"],
+.myform input[type="search"],
+.myform input[type="time"],
+.myform input[type="url"],
+.myform textarea,
+.myform select {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: rgba(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    background-color: #e8eeef;
+    color:#8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+    
+}
+.myform input[type="text"]:focus,
+.myform input[type="date"]:focus,
+.myform input[type="datetime"]:focus,
+.myform input[type="email"]:focus,
+.myform input[type="number"]:focus,
+.myform input[type="search"]:focus,
+.myform input[type="time"]:focus,
+.myform input[type="url"]:focus,
+.myform textarea:focus,
+.myform select:focus{
+    background: #d2d9dd;
+}
+.myform select{
+    -webkit-appearance: menulist-button;
+    height:35px;
+}
+.myform .number {
+    background: #1abc9c;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 15px 15px 15px 0px;
+}
+
+.myform input[type="submit"],
+.myform input[type="button"],
+.myform input[type="reset"]
+{
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    background: #1abc9c;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 40%;
+    border: 1px solid #16a085;
+    border-width: 1px 1px 3px;
+    margin: 0 5%;
+    margin-bottom: 5px;
+    float: left;
+}
+.myform input[type="submit"]:hover,
+.myform input[type="button"]:hover,
+.myform input[type="reset"]:hover
+{
+	cursor: pointer;
+    background: #109177;
+}
+
+.cleardiv{
+	clear: both;
+}
+.error{
+	color: red;
+	font-size: 16px;
+	text-align: right;
+}
